@@ -2,25 +2,36 @@
 
 <html>
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
     <script src="popup.js"></script>
 </head>
 <body>
 
-    <h1>Session Saver</h1>
-    <hr>
+    <div class="container">
+        <h1>Session Saver</h1>
+        <hr>
 
-    <p>Name for New Session</p>
-    <input type="text" placeholder="New Session" id="name">
-    <input type="submit" id="new-session">
-    <span id="invalid"></span>
+        <p>Name for New Session</p>
+        <input type="text" placeholder="New Session" id="name">
+        <input type="submit" id="new-session">
+        <span id="invalid"></span>
 
-    <ul class="list">
+        <table class="table" id="sessions-table">
+            <thead>
+                <th scope="col">Session Name</th>
+                <th scope="col">Date Created</th>
+            </thead>
+            <tbody class="list">
+            </tbody>
+        </table>
 
-    </ul>
+        <ul class="list">
 
-    <h2 id="working"></h2>
+        </ul>
+    </div>
+
 
 </body>
 </html>

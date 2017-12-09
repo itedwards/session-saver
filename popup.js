@@ -1,14 +1,20 @@
 $(function(){
 
-    /*chrome.storage.sync.get({sessions: []}, function(arr){
-        var sessions = arr.sessions.sessions;
+    chrome.storage.sync.get({sessions: []}, function(arr){
+        var sessions = arr.sessions;
         console.log(sessions.length);
-        for(int i = 0; i < sessions.length; ++i){
-            var new_task = $("<li><a></a></li>").addClass('task');
-            new_task.text(sessions[i].name + " - " + sessions[i].date); 
-            new_task.appendTo('ul.list');
+        for(var i = 0; i < sessions.length; ++i){
+
+
+            $("#sessions-table").find('tbody')
+                .append($('<tr>')
+                    .append($('<td>').text(sessions[i].name)
+                    )
+                    .append($('<td>').text(sessions[i].date)
+                    )
+                );
         }
-    })*/
+    })
 
 
     $('#new-session').click(function(event){
@@ -23,16 +29,20 @@ $(function(){
                     date: getFormattedDate()
                 };
 
-                sessions.push(new_session);
+                sessions.unshift(new_session);
 
                 chrome.storage.sync.set({'sessions': sessions});
 
                 console.log(sessions);
 
+                var new_name = $("<td></td>");
+                var new_date = $("<td></td>");
+                new_name.text(new_session.name); 
+                new_date.text(new_session.date);
 
-                var new_task = $("<li><a></a></li>").addClass('task');
-                new_task.text(new_session.name + " - " + new_session.date); 
-                new_task.appendTo('ul.list');
+                var new_row = $("<tr>" + new_name + new_date + "</tr>");
+
+                new_row.appendTo('tbody.list');
             });
         }
         else{
