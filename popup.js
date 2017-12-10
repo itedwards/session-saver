@@ -12,10 +12,18 @@ $(function(){
                     )
                     .append($('<td>').text(sessions[i].date)
                     )
+                    .append($('<td>').text("Delete")
+                    )
                 );
         }
+        console.log(sessions);
     })
 
+    $('#clear').click(function(event){
+        chrome.storage.sync.clear(function(){
+            $("#sessions-table > tbody").html("");
+        });
+    })
 
     $('#new-session').click(function(event){
         if($('#name').val() !== ""){

@@ -3,3 +3,14 @@ body {
     min-height: 375px;
     overflow-x: hidden;
 }
+
+#clear{
+    text-align: right;
+    margin-bottom: 10px;
+    float: right;
+}
+
+#header{
+    margin-top: 10px;
+    font-style: italic;
+}
