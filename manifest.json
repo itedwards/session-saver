@@ -3,24 +3,31 @@
     "name": "Session Saver",
     "version": "0.1",
 
-    "content_scripts": [
-        {
-            "matches": [
-              "<all_urls>"
-            ],
-            "js": ["content.js", "jquery-3.2.1.min.js"]
-        }
-    ], 
+    "background": {
+        "persistent": false, // As explained above
+        "scripts": ["TabBackGround.js"] // Multiple comma separated names of background scripts can be added 
+    },
 
     "browser_action": {
         "default_icon": "icon.png",
         "default_popup": "popup.html"
     },
 
+    "options_page": "options.html",
+
     "permissions": [
           "tabs",
           "storage"
-    ]
+    ],
 
+    "commands": {
+        "save-and-close" : {
+            "suggested_key": {
+                "default": "Alt+A",
+                "mac": "Command+Shift+0" 
+            },
+            "description" : "Save and close active window."
+        }
+    }
 
 }

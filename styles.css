@@ -1,16 +1,42 @@
 body {
-    min-width: 450px;
+    min-width: 500px;
     min-height: 375px;
     overflow-x: hidden;
 }
 
 #clear{
     text-align: right;
-    margin-bottom: 10px;
+    margin: 10px;
     float: right;
 }
 
 #header{
     margin-top: 10px;
     font-style: italic;
+}
+
+#parent {
+  display: flex;
+}
+#narrow {
+  width: 30%;
+
+}
+#wide {
+  flex: 1;
+  /* Grow to rest of container */
+}
+
+.trash-can{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+#description{
+  font-style: italic;
+}
+
+.clickable-row:hover {
+  background-color: lightyellow;
 }
