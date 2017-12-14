@@ -1,4 +1,3 @@
-
 chrome.commands.onCommand.addListener(function(command) { 
     if(command === "save-and-close"){
         // chrome.runtime.sendMessage({trigger: "save-and-close"});

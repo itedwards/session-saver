@@ -4,8 +4,8 @@
     "version": "0.1",
 
     "background": {
-        "persistent": false, // As explained above
-        "scripts": ["TabBackGround.js"] // Multiple comma separated names of background scripts can be added 
+        "persistent": false,
+        "scripts": ["TabBackGround.js"]
     },
 
     "icons": {
