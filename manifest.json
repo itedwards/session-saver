@@ -8,8 +8,14 @@
         "scripts": ["TabBackGround.js"] // Multiple comma separated names of background scripts can be added 
     },
 
+    "icons": {
+        "16": "session-16.png",
+        "48": "session-48.png",
+        "128": "session-128.png"
+    },
+
     "browser_action": {
-        "default_icon": "icon.png",
+        "default_icon": "session-16.png",
         "default_popup": "popup.html"
     },
 
@@ -20,13 +26,15 @@
           "storage"
     ],
 
-    "commands": {
-        "save-and-close" : {
+    "commands":
+    {
+        "save-and-close" : 
+        {
             "suggested_key": {
                 "default": "Alt+A",
                 "mac": "Command+Shift+0" 
             },
-            "description" : "Save and close active window."
+            "description" : "Saves current window and closes it."
         }
     }
 

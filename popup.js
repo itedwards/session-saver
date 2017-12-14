@@ -3,30 +3,105 @@ $(function(){
     chrome.storage.sync.get({sessions: []}, function(arr){
         var sessions = arr.sessions;
 
+        console.log(JSON.stringify(sessions));
+
         for(var i = 0; i < sessions.length; ++i){
 
             $("#sessions-table").find('tbody')
                 .append($('<tr class="clickable-row">')
-                    .append($('<td>').text(sessions[i].name)
+                    .append($('<td class="open-session">')
+                        .append($('<a href="#">').text(sessions[i].name))
+                        .attr('id', sessions[i].id)
                     )
                     .append($('<td>').text(sessions[i].date)
                     )
-                    .append($('<td>').text(Object.keys(sessions).length)
+                    .append($('<td>').text(Object.keys(sessions[i].tabArray).length)
                     )
-                    .append($('<td>')
-                        .append($('<img class="trash-can">')
-                            .attr('src', 'trash.svg')
-                            .attr('alt', 'trash'))
+                    .append($('<td class="trash-link">')
+                        .append($('<a href="#">')
+                            .attr('id', sessions[i].id)
+                            .append($('<img class="trash-can">')
+                                .attr('src', 'trash.svg')
+                                .attr('alt', 'trash')
+                            )
+                        )
                     )
-            );
+                    .attr('id', sessions[i].id)
+                    
+                );
         }
-    })
+    });
 
     $('#clear').click(function(event){
         chrome.storage.sync.clear(function(){
             $("#sessions-table > tbody").html("");
         });
     })
+
+    $('tbody').on('click','.open-session', function(){
+        var currId = $(this).attr('id');
+        chrome.storage.sync.get({sessions: []}, function(arr){
+
+            var sessions = arr.sessions;
+
+            for(var i = 0; i < sessions.length; ++i){
+                if(sessions[i].id === currId){
+                    var tabs = sessions[i].tabArray;
+                    var toOpen = [];
+                    for(var j = 0; j < tabs.length; ++j){
+                        toOpen.push(tabs[j].url);
+                    }
+                    chrome.windows.create({url: toOpen});
+                    break;
+                }
+            }
+
+        });
+    });
+
+    $('tbody').on('click','.trash-link', function(){
+        var currId = $(this).attr('id');
+        chrome.storage.sync.get({sessions: []}, function(arr){
+
+            var sessions = arr.sessions;
+
+            for(var i = 0; i < sessions.length; ++i){
+                if(sessions[i].id === currId){
+                    sessions.splice(i, 1);
+                    break;
+                }
+            }
+
+            chrome.storage.sync.set({'sessions': sessions});
+        });
+
+        $('table#sessions-table tr#' + currId).remove();
+    });
+
+    function deleteSession(id){
+        alert("deleting");
+        chrome.storage.sync.get({sessions: []}, function(arr){
+
+            var sessions = arr.sessions;
+
+            for(var i = 0; i < sessions.length; ++i){
+                if(sessions[i].id === id){
+                    sessions.splice(i, 1);
+                    break;
+                }
+            }
+
+            chrome.storage.sync.set({'sessions': sessions});
+        });
+
+        $('table#sessions-table tr#' + id).remove();
+
+    }
+
+    function openSession(id){
+
+    }
+
 
     /*$('#new-session').click(function(event){
         if($('#name').val() !== ""){
