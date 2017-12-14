@@ -17,7 +17,7 @@ $(function(){
                     )
                     .append($('<td>').text(Object.keys(sessions[i].tabArray).length)
                     )
-                    .append($('<td class="trash-link">')
+                    /*.append($('<td class="trash-link">')
                         .append($('<a href="#">')
                             .attr('id', sessions[i].id)
                             .append($('<img class="trash-can">')
@@ -25,6 +25,10 @@ $(function(){
                                 .attr('alt', 'trash')
                             )
                         )
+                    )*/
+                    .append($('<td class="trash-link">')
+                        .append($('<a href="#">').text("Delete"))
+                        .attr('id', sessions[i].id)
                     )
                     .attr('id', sessions[i].id)
                     
