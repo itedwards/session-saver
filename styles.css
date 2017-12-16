@@ -19,7 +19,7 @@ body {
   display: flex;
 }
 #narrow {
-  width: 30%;
+  width: 40%;
 
 }
 #wide {
@@ -39,4 +39,10 @@ body {
 
 .clickable-row:hover {
   background-color: lightyellow;
+}
+
+#usage{
+    text-align: right;
+    margin-top: 10px;
+    float: right;
 }

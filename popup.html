@@ -3,8 +3,9 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="styles.css">
     <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="popup.js"></script>
 </head>
 <body>
@@ -16,12 +17,21 @@
                 <h2 id="header">Session Saver</h2>
             </div>
             <div id="narrow">
-                <a id="clear" class="btn btn-primary">Clear All</a>
+                <button id="usage" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Usage</button>
+                <button id="clear" class="btn btn-primary">Clear All</button>
             </div>
         </div>
 
-        <p id="description">Use the hotkey combination of Command+Shift+0 
-        to save your current window and open a new one.</p>
+        <div id="demo" class="collapse">
+            The hotkey to save and close a session is 
+            automatically set to Ctrl+Shift+U or Command+Shift+U on Mac. Please visit chrome://extensions
+            and scroll down to Keyboard Shortcuts if you wish to change the hotkey.
+        </div>
+
+
+        <!--<img src="question-mark.svg" class="masterTooltip trash-can" title="The hotkey to save and close a session is 
+        automatically set to Ctrl+Shift+U or Command+Shift+U on Mac. Please visit chrome://extensions
+        and scroll down to Keyboard Shortcuts if you wish to change the hotkey." />-->
 
         <table class="table" id="sessions-table">
             <thead>
@@ -34,9 +44,8 @@
             </tbody>
         </table>
 
-        <ul class="list">
 
-        </ul>
+
     </div>
 
 
